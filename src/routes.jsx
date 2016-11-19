@@ -17,7 +17,7 @@ module.exports = (
         <Route path="/" component={Main}>            
             <Route path="consultantlist" component={ConsultantList} />
             <Route path="skilllist" component={SkillList} />
-            <Route path="addskill2cons" component={AddSkill2Cons} />
+            <Route path="addskill2cons/:id" component={AddSkill2Cons} />
             <Route path="dashboard" component={Dashboard} />
         </Route>
     </Router>
