@@ -37,9 +37,9 @@ module.exports = React.createClass({
     },
     render:function () {
         return <div className="dropdown">
-                {this.renderSkill()} 
-                {this.renderLevel()} 
-            <button className="btn btn-default" onClick={this.handleClick}>Associer compétence</button>
+                {this.renderSkill()}<div className="col-md-1 col-sm-1"></div>
+                {this.renderLevel()}<div className="col-md-1 col-sm-1"></div>
+            <button className="btn btn-default col-md-2 col-sm-2" onClick={this.handleClick}>Associer compétence</button>
             <h5 className="text-center">Niveau de maîtrise de la compétence : 1=débutant - 5=expert</h5>
         </div>
         
@@ -50,7 +50,11 @@ module.exports = React.createClass({
             for (var i=1 ; i<=5 ; i++) {
                 children.push(<option value={i} key={i}>{i}</option>);
             }
-            return <select name="skilllevel" onChange={this.handleLevelChange} value={this.state.skillLevel}>
+            return <select 
+               name="skilllevel" 
+               onChange={this.handleLevelChange} 
+               value={this.state.skillLevel}
+               className="col-md-3 col-sm-3">
                 <option value="0">Niveau de maîtrise</option>
                 {children}
             </select>; 
@@ -70,9 +74,13 @@ module.exports = React.createClass({
                 skill.key = key;
                 children.push(<option value={skill.id} key={key}>{skill.skill}</option>);
             }
-            return <select name="skillname" onChange={this.handleSkillChange} value={this.state.skill}>
-               <option value="0">Sélectionner une compétence</option>
-                {children} 
+            return <select 
+                name="skillname" 
+                onChange={this.handleSkillChange} 
+                value={this.state.skill}
+                className="col-md-5 col-sm-5">
+                    <option value="0">Sélectionner une compétence</option>
+                    {children} 
             </select>;
         }
     }

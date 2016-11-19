@@ -33,7 +33,7 @@ module.exports = React.createClass({
                 for (var key in this.state.consultants) {
                     var consultant = this.state.consultants[key];
                     consultant.key = key;
-                    children.push(<Consultant consultant={consultant} key={key} />);
+                    children.push(<div key={key}><Consultant consultant={consultant} /><hr /></div>);
                 }
                 return children;
             }

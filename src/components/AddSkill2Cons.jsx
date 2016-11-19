@@ -18,7 +18,7 @@ module.exports = React.createClass({
         return <div>
             <h2 className="text-center">Associer une compétence à un consultant</h2><br /><br />
             <h4 className="text-center">Compétence(s) associée(s) au consultant <strong>{this.state.consultant.firstname} {this.state.consultant.lastname}</strong> :</h4>
-            <DisplaySkills consultantID={this.state.consultant.id} />
+            <DisplaySkills consultantID={this.state.consultant.id} /><br />
             <hr />
             <SkillsDropdown consultant={this.state.consultant}/>
         </div>

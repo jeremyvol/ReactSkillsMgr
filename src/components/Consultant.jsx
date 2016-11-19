@@ -15,12 +15,13 @@ module.exports = React.createClass({
                 className="col-md-2 col-sm-2  text-center" 
                 to={"addskill2cons/" + this.props.consultant.key}
                 
-                key={this.props.consultant.key}>Associer compétence(s)</Link>
+                key={this.props.consultant.key}>Consulter/Associer<br />compétence(s)</Link>
             <button 
                 className="btn btn-default col-md-2 col-sm-2"
                 onClick={this.handleDeleteClick}>
                 Supprimer
             </button>
+            <hr />
         </div>
     }
 });
