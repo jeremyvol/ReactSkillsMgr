@@ -10,13 +10,14 @@ var AddConsultant = require('./components/AddConsultant');
 var SkillList = require('./components/SkillList');
 var AddSkill = require('./components/AddSkill');
 var Dashboard = require('./components/Dashboard');
+var AddSkill2Cons = require('./components/AddSkill2Cons');
 
 module.exports = (
     <Router>
         <Route path="/" component={Main}>            
             <Route path="consultantlist" component={ConsultantList} />
-            <Route path="consultantlist/addconsultant" component={AddConsultant} />
             <Route path="skilllist" component={SkillList} />
+            <Route path="addskill2cons" component={AddSkill2Cons} />
             <Route path="dashboard" component={Dashboard} />
         </Route>
     </Router>
@@ -24,3 +25,4 @@ module.exports = (
 
 
 //<Route path="skilllist/addskill" component={AddSkill} />
+//<Route path="consultantlist/addconsultant" component={AddConsultant} />

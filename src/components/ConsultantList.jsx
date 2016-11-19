@@ -1,15 +1,43 @@
 var React = require('react');
-var ReactRouter = require('react-router');
-var Link = ReactRouter.Link;
+var AddConsultant = require('./AddConsultant');
+var Consultant = require('./Consultant');
+
+var ReactFire = require('reactfire');
+var Firebase = require('firebase');
 
 module.exports = React.createClass({
+    mixins: [ ReactFire],
+    getInitialState: function () {
+        return {
+            consultants: {}
+        }
+    },
+    componentWillMount: function() {
+        this.bindAsObject(new Firebase(rootUrl + 'consultants/'), 'consultants');
+    },
     render: function () {
         return <div>
-            <h2 className="text-center">Liste des consultants</h2><br /><br />
+            <h2 className="text-center">Liste des consultants</h2><br />
+            {this.renderList()}
             <hr />
-            <div className="text-center">
-                <Link to={"consultantlist/addconsultant"}>Ajouter un consultant</Link>
-            </div>
+            <AddConsultant />
         </div>
+    },
+    renderList: function() {
+        if (!this.state.consultants) {
+            return <h4 className="text-center">
+                Actuellement, aucun consultant n'existe en base.
+            </h4>
+            } else {
+                var children = [];
+                for (var key in this.state.consultants) {
+                    var consultant = this.state.consultants[key];
+                    consultant.key = key;
+                    children.push(<Consultant consultant={consultant} key={key} />);
+                }
+                return children;
+            }
     }
 });
+
+//<Link to={"consultantlist/addconsultant"}>Ajouter un consultant</Link>

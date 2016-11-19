@@ -1,12 +1,8 @@
 var React = require('react');
-var ReactRouter = require('react-router');
-var Link = ReactRouter.Link;
-var AddSkill = require('./AddSkill');
-var Skill = require('./Skill');
-
 var ReactFire = require('reactfire');
 var Firebase = require('firebase');
-
+var AddSkill = require('./AddSkill');
+var Skill = require('./Skill');
 
 module.exports = React.createClass({
     mixins: [ ReactFire],
@@ -20,12 +16,10 @@ module.exports = React.createClass({
     },
     render: function () {
         return <div>
-            <h2 className="text-center">Liste des compétences</h2><br /><br />
-            <div>
+            <h2 className="text-center">Liste des compétences</h2><br />
             <ul>
                 {this.renderList()}
             </ul>
-            </div> 
             <hr />
             <AddSkill />
         </div>
@@ -44,7 +38,5 @@ module.exports = React.createClass({
                 }
                 return children;
             }
-    },
-    
-    
+    }
 });
