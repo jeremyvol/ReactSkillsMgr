@@ -17,8 +17,10 @@ module.exports = (
             <Route path="consultantlist" component={ConsultantList} />
             <Route path="consultantlist/addconsultant" component={AddConsultant} />
             <Route path="skilllist" component={SkillList} />
-            <Route path="skilllist/addskill" component={AddSkill} />
             <Route path="dashboard" component={Dashboard} />
         </Route>
     </Router>
 );
+
+
+//<Route path="skilllist/addskill" component={AddSkill} />
