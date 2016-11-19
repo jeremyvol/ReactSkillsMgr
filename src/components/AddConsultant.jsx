@@ -34,7 +34,7 @@ module.exports = React.createClass({
     },
     render: function () {
         return <div className="">
-        <h2 className="text-center">Ajout d'un consultant</h2>
+        <h2 className="text-center">Ajouter un consultant</h2>
         <form  onSubmit={this.handleSubmit} className="form-inline">
             <div className="form-group col-md-5 col-sm-5">
                 <label htmlFor="lastname">Nom&nbsp;&nbsp;&nbsp;</label>
@@ -57,7 +57,7 @@ module.exports = React.createClass({
                     onChange={this.handleFirstnameChange} 
                     size="30" />
             </div> 
-            <button type="submit" className="btn btn-default col-md-2 col-sm-2 ">Ajouter un consultant</button>
+            <button type="submit" className="btn btn-default col-md-2 col-sm-2 ">Ajouter consultant</button>
         </form>
         </div>
     }
