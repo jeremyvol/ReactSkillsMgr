@@ -1,13 +1,6 @@
-my own version of an imgur client 
+Web app in progress, skills management
 
-made in React using Reflux, react-router and lodash
-
-Made during online training "Build Web Apps with React JS and Flux" 
-by Stephen Grider on udemy.com
-
-all credits to Stephen Grider ste.grider@gmail.com
-https://github.com/StephenGrider
-
+made in React using react-router, Firebase and Bootstrap
 
 to make it run, after cloning :
 
