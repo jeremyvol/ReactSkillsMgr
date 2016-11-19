@@ -12,21 +12,22 @@ module.exports = React.createClass({
     },
     componentWillMount: function() {
         this.bindAsObject(new Firebase(rootUrl + 'skills/'), 'skills');
+        this.bindAsObject(new Firebase(rootUrl + 'linkTable/'), 'linkTable');
     },
     handleClick: function () {
-        /*this.firebaseRefs.linkTable.push({ 
-            
-            skillID: this.state.skill,
-            consultantID:
-        });
-        this.setState({ skill: '' });*/
         if (this.state.skillID != 0 && this.state.skillLevel != 0) {
-            console.log("Mon consultant ID est " + this.props.consultant.id);
-            console.log("Mon skill ID est " + this.state.skillID);
-            console.log("Mon skill level est " + this.state.skillLevel);    
+            this.firebaseRefs.linkTable.push({
+                skillID: this.state.skillID,
+                consultantID:this.props.consultant.id,
+                skillLevel:this.state.skillLevel
+            });
         } else {
             alert("Veuiller sélectionner une compétence et un niveau de maîtrise pour cette compétence.");
         }
+        this.setState({ 
+            skillID: 0,
+            skillLevel: 0
+        });
     },
     handleLevelChange: function (event) {
         this.setState({ skillLevel: event.target.value });

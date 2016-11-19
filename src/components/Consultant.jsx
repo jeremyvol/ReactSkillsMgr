@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
+var DisplaySkills = require('./DisplaySkills');
 
 module.exports = React.createClass({
     handleDeleteClick: function() {
@@ -23,4 +24,3 @@ module.exports = React.createClass({
         </div>
     }
 });
-    
