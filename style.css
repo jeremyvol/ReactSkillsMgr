@@ -1,0 +1,18 @@
+.header .active {
+  font-weight: 900; }
+
+#home {
+  width: 75%;
+  margin: 0px auto 0px auto; }
+
+.black {
+  color: black; }
+
+.center {
+  text-align: center;
+  width: auto; }
+
+.consultant {
+  display: flex;
+  justify-content: center;
+  align-items: center; }

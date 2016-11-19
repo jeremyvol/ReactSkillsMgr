@@ -21,7 +21,6 @@ module.exports = React.createClass({
                 onClick={this.handleDeleteClick}>
                 Supprimer
             </button>
-            <hr />
         </div>
     }
 });
