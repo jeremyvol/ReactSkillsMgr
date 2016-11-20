@@ -89,7 +89,7 @@ module.exports = React.createClass({
         for (var keySkill in this.state.skills) {
             var nbrCons = 0;
             labels.push(this.state.skills[keySkill].skill);
-            backgroundColor.push('rgba(0, 107, 91, 0.2)')
+            backgroundColor.push('rgba(0, 107, 191, 1)')
             for (var keyLink in this.state.linkTable) {
                 if (this.state.linkTable[keyLink].skillID == this.state.skills[keySkill].id) {
                     nbrCons++;
