@@ -1,4 +1,5 @@
 var React = require('react');
+var Chart = require('chart.js');
 
 var ReactFire = require('reactfire');
 var Firebase = require('firebase');
@@ -16,8 +17,10 @@ module.exports = React.createClass({
         this.bindAsObject(new Firebase(rootUrl + 'linkTable/'), 'linkTable');
     },
     render: function () {
+        this.drawChart();
         return <div className="">
             <h2 className="text-center">Tableau de bord</h2><br /><br />
+            <canvas id="myChart" width="400" height="400"></canvas>
             <h5 className="text-center">Niveau de maîtrise de la compétence : 1=débutant - 5=expert</h5><br /><br />
             <table className="table table-striped table-condensed table-bordered">
             <tbody>
@@ -75,19 +78,49 @@ module.exports = React.createClass({
             }
         }
         return children;
+    },
+    drawChart: function() {
+        var data = [];
+        var labels = [];
+        var backgroundColor = [];
+        
+        
+        
+        for (var keySkill in this.state.skills) {
+            var nbrCons = 0;
+            labels.push(this.state.skills[keySkill].skill);
+            backgroundColor.push('rgba(0, 107, 91, 0.2)')
+            for (var keyLink in this.state.linkTable) {
+                if (this.state.linkTable[keyLink].skillID == this.state.skills[keySkill].id) {
+                    nbrCons++;
+                }
+            }
+            
+            data.push(nbrCons);
+        }
+        var ctx = "myChart";
+        var myChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Nombre de consultants',
+                    data: data,
+                    backgroundColor: backgroundColor,
+                    borderColor: [],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
     }
-    
 });
-
-
-            /*<thead>
-            <tr>
-                <td className="text-center"><strong>Compétence</strong></td>
-                <td className="text-center"><strong>Nombre de consultants</strong></td>
-            </tr>
-            </thead>*/
-
-/*<td colSpan="2" className="text-center">Répartition de la compétence par niveau
-<table className="table"><thead><tr><td></td><td></td></tr></thead><tbody></tbody></table></td>*/
-
-
