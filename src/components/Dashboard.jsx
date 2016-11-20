@@ -19,9 +19,9 @@ module.exports = React.createClass({
     render: function () {
         this.drawChart();
         return <div className="">
-            <h2 className="text-center">Tableau de bord</h2><br /><br />
-            <canvas id="myChart" width="400" height="400"></canvas>
-            <h5 className="text-center">Niveau de maîtrise de la compétence : 1=débutant - 5=expert</h5><br /><br />
+            <h2 className="text-center">Tableau de bord</h2><br /><br /><br />
+            <canvas id="myChart" width="400" height="400"></canvas> <hr /><br />
+            <h5 className="text-center">Niveau de maîtrise de la compétence : 1=débutant - 5=expert</h5><br />
             <table className="table table-striped table-condensed table-bordered">
             <tbody>
                 {this.renderSkills()}
@@ -83,8 +83,6 @@ module.exports = React.createClass({
         var data = [];
         var labels = [];
         var backgroundColor = [];
-        
-        
         
         for (var keySkill in this.state.skills) {
             var nbrCons = 0;

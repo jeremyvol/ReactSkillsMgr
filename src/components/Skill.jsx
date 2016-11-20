@@ -1,7 +1,10 @@
 var React = require('react');
+
+var ReactFire = require('reactfire');
 var Firebase = require('firebase');
 
 module.exports = React.createClass({
+    mixins: [ ReactFire],
     getInitialState: function () {
         return {
             skill: this.props.skill.skill,
@@ -10,6 +13,7 @@ module.exports = React.createClass({
     },
     componentWillMount: function () {
         this.fb = new Firebase(rootUrl + 'skills/' + this.props.skill.key);
+        this.bindAsObject(new Firebase(rootUrl + 'linkTable/'), 'linkTable');
     },
     handleTextChange: function (event) {
         this.setState({
@@ -18,6 +22,12 @@ module.exports = React.createClass({
         });
     },
     handleDeleteClick: function() {
+         for (var keyLink in this.state.linkTable) {
+            if (this.state.linkTable[keyLink].skillID == this.props.skill.id) {
+                var temp = new Firebase(rootUrl + 'linkTable/' + keyLink);
+                temp.remove();
+            }
+        }
         this.fb.remove();
     },
     handleSaveClick: function(event) {

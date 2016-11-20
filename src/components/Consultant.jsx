@@ -3,8 +3,22 @@ var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
 var DisplaySkills = require('./DisplaySkills');
 
+var ReactFire = require('reactfire');
+var Firebase = require('firebase');
+
 module.exports = React.createClass({
+    mixins: [ ReactFire],
+    componentWillMount: function() {
+        this.fb = new Firebase(rootUrl + 'consultants/' + this.props.consultant.key);
+        this.bindAsObject(new Firebase(rootUrl + 'linkTable/'), 'linkTable');
+    },
     handleDeleteClick: function() {
+        for (var keyLink in this.state.linkTable) {
+            if (this.state.linkTable[keyLink].consultantID == this.props.consultant.id) {
+                var temp = new Firebase(rootUrl + 'linkTable/' + keyLink);
+                temp.remove();
+            }
+        }
         this.fb.remove();
     },
     render: function () {
